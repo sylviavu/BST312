@@ -247,8 +247,7 @@ template<class ItemType>
 void BST_312 <ItemType>::makeEmpty(TreeNode*& t)
 {
     if(t == NULL){
-        cout << "No further nodes" << endl;
-        cout << endl;
+        return;
     }
 
     if(t->left != NULL){
@@ -301,11 +300,8 @@ void BST_312 <ItemType>::insertItem(TreeNode*& t, const ItemType& newItem)
         TreeNode *newNode = new TreeNode;
         t = newNode;
         t->data = newItem;
-    }
-
-    else if(t->data == newItem){        //ensure that there are no duplicates in the tree
-        cout << "This value already exists in the tree!" << endl;
-        cout << endl;
+        t->left = NULL;
+        t->right = NULL;
     }
 
     else if(newItem > t->data){      //base condition; if the node has no right child
@@ -369,7 +365,7 @@ template<class ItemType>
 void BST_312 <ItemType>::preOrderTraversal(TreeNode* t,vector<ItemType>& result) const
 {
     if(t == NULL){
-        cout << "No further nodes" << endl;
+        return;
     }
     else{
         result.push_back(t->data);                  //PreOrder: node, left, right
@@ -392,7 +388,7 @@ template<class ItemType>
 void BST_312 <ItemType>::inOrderTraversal(TreeNode* t,vector<ItemType>& result) const
 {
     if(t == NULL){
-        cout << "No further nodes" << endl;
+        return;
     }
 
     //InOrder: left, node, right
@@ -414,7 +410,7 @@ template<class ItemType>
 void BST_312 <ItemType>::postOrderTraversal(TreeNode* t,vector<ItemType>& result) const
 {
     if(t == NULL){
-        cout << "No further nodes" << endl;
+        return;
     }
 
     //PostOrder: left, right, node
@@ -452,7 +448,7 @@ bool BST_312 <ItemType>::isItemInTree(const ItemType& item)
             temp = temp->left;
         }
     }
-
+    return false;
 }
 #endif
 
